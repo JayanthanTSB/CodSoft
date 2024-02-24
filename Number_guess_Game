@@ -1,0 +1,69 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class game1 {
+	private static final int max_range = 100;
+	private static final int min_range = 1;
+	private static final int max_attempt = 5;
+	private static final int max_round = 3;
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		
+		Random random = new Random();
+		int totalscore = 0;
+		boolean again = true;
+		
+		while(again) {
+		System.out.println("Welcome to number guessing game");
+		System.out.println("\nTotal rounds : "+max_round+" \nNumber of attempts : "+max_attempt );
+		
+		for (int i=1 ; i<= max_round;i++) {
+			int secretnumber = random.nextInt(max_range - min_range + 1) + min_range;
+			
+			int attempt = 0;
+			System.out.println("Round "+ i+
+					"\nguess the number between "+min_range+" and "+max_range+".");
+			
+			while(attempt<max_attempt) {
+				System.out.println("enter the guess number ");
+				int number = s.nextInt();
+				attempt += 1;
+				
+				if(number== secretnumber ) {
+					int score = max_attempt-attempt;
+					totalscore = totalscore + score;
+					System.out.println("Wow u guessed it right !!!!!\n");
+					break;
+				}
+				else if(number < secretnumber) {
+					System.out.println("Oops! the guessed number is lowww!");
+					System.err.println("Attempt left "+ (max_attempt-attempt)+"\n");
+				}
+				else if(number > secretnumber) { 
+					System.out.println("Oops! the guessed number is too high");
+					System.err.println("Attempt left "+ (max_attempt-attempt)+"\n");
+				}
+				else 
+					System.out.println("The number is invalid");
+			}
+			if (attempt==max_attempt) {
+				System.out.println("Round = "+i);
+				System.out.println("Attempts = 0");
+				System.out.println("the random nuber is "+ secretnumber +"\n");
+			}
+			System.err.println("GAME OVER !!!");
+			System.err.println("Totalscore = "+totalscore);
+			System.out.println("*---------------------------------------------*\n");
+			
+		}
+		System.out.print("Do you want to play again? (y/n): ");
+        String playAgainInput = s.next().toLowerCase();
+        if (!playAgainInput.equals("y")) {
+        	again = false;
+        	System.out.println("Bye bye .............");
+        }
+        
+        }
+	}
+}
