@@ -92,9 +92,9 @@ public class Management {
 
         while (true) {
             System.out.println("\nStudent Management System");
-            System.out.println("1. Add a new student");
-            System.out.println("2. Remove a student");
-            System.out.println("3. Search for a student");
+            System.out.println("1. Add new student");
+            System.out.println("2. Remove student");
+            System.out.println("3. Search for student");
             System.out.println("4. Display all students");
             System.out.println("5. Exit\n");
 
@@ -103,20 +103,20 @@ public class Management {
 
             switch (choice) {
                 case "1":
-                    System.out.print("\nEnter student's name: ");
+                    System.out.print("\nEnter name: ");
                     String name = scanner.nextLine();
-                    System.out.print("\nEnter student's roll number: ");
+                    System.out.print("\nEnter roll number: ");
                     String rollNumber = scanner.nextLine();
-                    System.out.print("\nEnter student's grade: ");
+                    System.out.print("\nEnter grade: ");
                     String grade = scanner.nextLine();
-                    System.out.print("\nEnter additional details (optional): ");
+                    System.out.print("\nEnter additional Info(if needed): ");
                     String details = scanner.nextLine();
                     Student newStudent = new Student(name, rollNumber, grade, details);
                     studentSystem.addStudent(newStudent);
                     System.out.println("\nStudent added successfully.");
                     break;
                 case "2":
-                    System.out.print("\nEnter the roll number of the student to remove: ");
+                    System.out.print("\nEnter the roll number of student to remove: ");
                     String rollToRemove = scanner.nextLine();
                     studentSystem.removeStudent(rollToRemove);
                     System.out.println("\nStudent removed successfully.");
@@ -147,3 +147,4 @@ public class Management {
         }
     }
 }
+
